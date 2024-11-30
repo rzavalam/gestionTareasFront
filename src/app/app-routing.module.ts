@@ -12,6 +12,7 @@ import { ModalConfirmacionComponent } from './utils/modal-confirmacion/modal-con
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { TareasModule } from './features/tareas/tareas.module';
 import { LogoutComponent } from './shared/components/logout/logout.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "/login", pathMatch: "full"},
@@ -27,7 +28,7 @@ const routes: Routes = [
       {path: "create", component: TareaCreateComponent}
     ]
   },
-  
+
   {path: "menu", component: MenuComponent},
   {
     path : 'menu/agregar',

@@ -16,6 +16,7 @@ import { environment } from './environments/environment';
 import { LoginComponent } from './shared/components/login/login.component';
 import { LogoutComponent } from './shared/components/logout/logout.component';
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     UserComponent,
     AboutComponent,
     LoginComponent,
+    HeaderComponent,
     LogoutComponent
     ],
   imports: [
