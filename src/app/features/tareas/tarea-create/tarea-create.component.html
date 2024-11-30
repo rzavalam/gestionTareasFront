@@ -1,11 +1,9 @@
 <p-card styleClass="user-form" class="flex justify-content-center">
     <form [formGroup]="tareaForm" onKeyPress="if(event.keyCode == 13) event.returnValue = false;">
         <div class="card flex flex-column md:flex-row gap-3">
-            <div class="card-header text-center bg-primary text-light">
+            <div class="card-header">
                 {{title}}
             </div>
-            <p-divider type="solid" />
-
             <div class="card-body">
                 <div class ="grid">
                     <div class="col-12 md:col-6">
