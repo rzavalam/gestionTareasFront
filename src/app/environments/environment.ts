@@ -1,4 +1,5 @@
 export const environment = {
+    production: true,
     firebasase: {
         apiKey: "AIzaSyCU7e7COu2IIeXE31dlp8Enm53AjVzPq58",
         authDomain: "proyectogestiontarea.firebaseapp.com",
@@ -8,5 +9,5 @@ export const environment = {
         appId: "1:632532434066:web:ab39b6eebf387e25e33a4b",
         measurementId: "G-NRV9T82QMN"
     },
-    production: false
+    urlBase: 'http://localhost:3001'
 } 

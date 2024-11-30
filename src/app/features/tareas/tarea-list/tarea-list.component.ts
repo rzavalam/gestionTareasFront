@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../core/services/product/product.service';
 import { Product } from '../../../core/models/product/product';
 import { Router } from '@angular/router';
+import { TareaService } from '../../../core/services/tarea/tarea.service';
+import { Tarea } from '../../../core/models/product/tarea';
  
 @Component({
   selector: 'app-tarea-list',
@@ -10,19 +11,19 @@ import { Router } from '@angular/router';
 })
 export class TareaListComponent implements OnInit {
  
-  products: Product[] = [];
+  tareas: Tarea[] = [];
   errorMessage: string | null = null;
  
  
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private tareaService: TareaService, private router: Router) {
  
     this.ngOnInit()
   }
  
   ngOnInit() {
-    this.productService.getProducts().subscribe({
+    this.tareaService.getTareas().subscribe({
       next: (data) => {
-        this.products = data;
+        this.tareas = data;
       },
       error: (err) => {
         this.errorMessage = 'No se pudieron cargar los productos.';
@@ -47,9 +48,9 @@ export class TareaListComponent implements OnInit {
  
   deleteProduct(id: string) {
     if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-      this.productService.deleteProduct(id).subscribe({
+      this.tareaService.deleteTarea(id).subscribe({
         next: () => {
-          this.products = this.products.filter(product => product.id !== id);
+          this.tareas = this.tareas.filter(product => product.id !== id);
           console.log('Producto eliminado:', id);
         },
         error: (err) => {

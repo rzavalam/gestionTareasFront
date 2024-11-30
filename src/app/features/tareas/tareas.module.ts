@@ -5,7 +5,14 @@ import { TareaListComponent } from './tarea-list/tarea-list.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TareaCreateComponent } from './tarea-create/tarea-create.component';
-
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CalendarModule } from 'primeng/calendar';
+import { AccordionModule } from 'primeng/accordion';
 
 
 @NgModule({
@@ -17,7 +24,15 @@ import { TareaCreateComponent } from './tarea-create/tarea-create.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    TableModule,
+    ButtonModule,
+    DialogModule,
+    ConfirmDialogModule,
+    ToastModule,
+    AutoCompleteModule,
+    CalendarModule,
+    AccordionModule
   ], 
   exports: [
     TareaComponent,
