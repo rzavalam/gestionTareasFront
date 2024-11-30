@@ -1,9 +1,10 @@
 export interface Tarea {
     id?: string;
     name: string;
-    persona: string;
-    horas: number;
-    fechaInicio: any;
-    
-  
+    responsable: string;
+    descripcion: string;
+    fechaInicio : Date;
+    fechaFinal : Date;
+    prioridad: string;
+    estado: string;
 }

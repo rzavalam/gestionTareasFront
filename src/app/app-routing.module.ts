@@ -21,11 +21,11 @@ const routes: Routes = [
   {path: "about", component: AboutComponent},
   {path: "user/:id", component: UserComponent},
   {path: "products", component: TareaComponent,
-    /*canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children:[
       {path: "list", component: TareaListComponent},
       {path: "create", component: TareaCreateComponent}
-    ]*/
+    ]
   },
   
   {path: "menu", component: MenuComponent},

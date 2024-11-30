@@ -14,6 +14,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { AccordionModule } from 'primeng/accordion';
 
 
 @NgModule({
@@ -34,7 +41,15 @@ import { DropdownModule } from 'primeng/dropdown';
     BrowserAnimationsModule,
     InputGroupModule,
     InputGroupAddonModule,
-    DropdownModule
+    DropdownModule,
+    RouterModule,
+    TableModule,
+    ButtonModule,
+    DialogModule,
+    ConfirmDialogModule,
+    ToastModule,
+    AutoCompleteModule,
+    AccordionModule
   ], 
   exports: [
     TareaComponent,
