@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from './environments/environment';
 import { LoginComponent } from './shared/components/login/login.component';
 import { LogoutComponent } from './shared/components/logout/logout.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,15 +25,16 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
     AboutComponent,
     LoginComponent,
     LogoutComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TareasModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebasase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    SharedModule,
+    TareasModule
   ],
   providers: [
     provideClientHydration(),

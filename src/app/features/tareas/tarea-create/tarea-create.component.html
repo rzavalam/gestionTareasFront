@@ -1,10 +1,71 @@
-<h2>Agregar Producto</h2>
-<form (ngSubmit)="onSubmit()">
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" [(ngModel)]="product.name" name="name" required>
-    
-    <label for="price">Precio:</label>
-    <input type="number" id="price" [(ngModel)]="product.price" name="price" required>
+<p-card styleClass="user-form" class="flex justify-content-center">
+    <form [formGroup]="tareaForm" onKeyPress="if(event.keyCode == 13) event.returnValue = false;">
+        <div class="card flex flex-column md:flex-row gap-3">
+            <div class="card-header text-center bg-primary text-light">
+                {{title}}
+            </div>
+            <p-divider type="solid" />
 
-    <button type="submit">Agregar</button>
-</form>
+            <div class="card-body">
+                <div class ="grid">
+                    <div class="col-12 md:col-6">
+                        <label for="txtNombre">Nombre de Tarea</label>
+                        <input id="txtNombre" formControlName="txtNombre" />
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <label>Responsable</label>
+                        <p-inputGroup>
+                            <p-inputGroupAddon>
+                                <i class="pi pi-user"></i>
+                            </p-inputGroupAddon>
+                            <p-dropdown optionLabel="desResponsable"  [options]="lstResponsables" 
+                            placeholder="Seleccione" />
+                        </p-inputGroup>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <label for="txtDescripcion">Descripción</label>
+                        <textarea  id="txtDescripcion" formControlName="txtDescripcion" rows="5"
+                        cols="30" ></textarea>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <label for="cboPrioridad" class="fw-bold">Prioridad</label>
+                        <select class="form-select" formControlName="cboPrioridad" id="cboPrioridad" name="cboPrioridad">
+                            <option *ngFor="let item of lstPrioridad" [value]="item.codPrioridad">
+                                {{item.codPrioridad + '-' + item.desPrioridad}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <label for="cboEstado" class="fw-bold">Estado</label>
+                        <select class="form-select" formControlName="cboEstado" id="cboEstado" name="cboEstado">
+                            <option *ngFor="let item of lstEstado" [value]="item.codEstado">
+                                {{item.codEstado + '-' + item.desEstado}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <label for="fecInicio">Fecha Inicio</label>
+                        <p-calendar inputId="fecInicio"  formControlName="fecInicio" [(ngModel)]="date" [showIcon]="true"
+                        class="p-element p-inputwrapper ng-tns-c44-5 ng-pristine ng-valid ng-star-inserted ng-touched">
+                        </p-calendar>
+                        <label for="fecFin">Fecha Fin</label>
+                        <p-calendar inputId="fecFin" formControlName="fecFin" [(ngModel)]="date" [showIcon]="true"
+                        class="p-element">
+                        </p-calendar>
+                    </div>
+                    <p-divider type="solid" />
+                    <div class="col-12 md:col-6">
+                        <p-button label="Registrar" (onClick)="registrarTarea()" />
+                        <p-button label="Cancelar" disabled="true" />
+
+                    </div>
+                 </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        
+      </form>
+  </p-card>
+

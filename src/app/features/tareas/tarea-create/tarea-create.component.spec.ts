@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { TareaCreateComponent } from './tarea-create.component';
 
 describe('TareaCreateComponent', () => {
@@ -7,7 +8,7 @@ describe('TareaCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TareaCreateComponent]
+      imports: [TareaCreateComponent]
     })
     .compileComponents();
 
