@@ -23,7 +23,7 @@ export class MenuComponent {
             lable : '',
             icon: 'pi pi-cog',
             items:[
-              { label: 'Cerrar Sesión', icon: 'pi pi-cog', routerLink : '/logout' },
+              { label: 'Cerrar Sesión', icon: 'pi pi-cog', routerLink : '/login' },
             ]
 
           }

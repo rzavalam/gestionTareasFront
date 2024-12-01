@@ -29,7 +29,8 @@ const routes: Routes = [
     ]
   },
 
-  {path: "menu", component: MenuComponent},
+  {path: "menu",
+     component: MenuComponent},
   {
     path : 'menu/agregar',
     loadChildren : () => import('./features/tareas/tareas.module').then(m => m.TareasModule),
