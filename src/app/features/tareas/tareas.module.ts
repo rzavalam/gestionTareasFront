@@ -21,13 +21,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { AccordionModule } from 'primeng/accordion';
+import { OrdenarPipe } from './pipes/ordenar.pipe';
 
 
 @NgModule({
   declarations: [
     TareaComponent,
     TareaListComponent,
-    TareaCreateComponent
+    TareaCreateComponent,
+    OrdenarPipe
     ],
   imports: [
     TareasRoutingModule,

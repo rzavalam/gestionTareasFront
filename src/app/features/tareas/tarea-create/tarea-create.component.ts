@@ -37,8 +37,6 @@ export class TareaCreateComponent implements OnInit  {
     this.inicio();
     this.tareaForm = new FormGroup(
       {
-      nombre : new FormControl ([Validators.required]),
-      descTarea : new FormControl ([Validators.required]),
       responsable : new FormControl <Catalogo | null >(null),
       prioridad : new FormControl <Catalogo | null >(null),
       estado : new FormControl <Catalogo | null >(null),
@@ -49,7 +47,7 @@ export class TareaCreateComponent implements OnInit  {
   constructor(private fb: FormBuilder,private tareaService: TareaService, private router: Router) {
     this.title = "Registrar Tarea";
     this.tareaForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.email]],
+      nombre: ['', [Validators.required, Validators.minLength(50)]],
       responsable: ['', [Validators.required, Validators.email]],
       descTarea: ['', [Validators.required, Validators.minLength(8)]],
       prioridad : ['', [Validators.required]],
@@ -142,6 +140,10 @@ export class TareaCreateComponent implements OnInit  {
 
 registrarTarea(){
   console.log("Tarea Registrada");
+
+  console.log(this.tareaForm.value as Tarea)
+
+  /*
   this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
     next: (data) => {
       alert("Tarea Registrada");
@@ -151,5 +153,6 @@ registrarTarea(){
       console.error('Error al obtener productos:', err);
     }
   });
+  */
 }
 }
