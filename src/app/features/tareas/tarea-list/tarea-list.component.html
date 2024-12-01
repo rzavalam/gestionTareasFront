@@ -3,7 +3,7 @@
 
 <div class="card-body">
     <div class="row p-2">
-        <p-table #dt [value]="tareas" responsiveLayout="scroll"
+        <p-table #dt [value]="tareas | ordenar:'prioridad'" responsiveLayout="scroll"
             dataKey="numCorrelativo" [rows]="10" [paginator]="true" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[5,10,15,20]"
             [paginator]="true" [lazy]="false"
