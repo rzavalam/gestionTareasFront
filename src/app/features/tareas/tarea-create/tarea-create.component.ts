@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { TareaService } from '../../../core/services/tarea/tarea.service';
 import { Tarea } from '../../../core/models/product/tarea';
@@ -9,27 +9,24 @@ interface AutoCompleteCompleteEvent {
   query: string;
 }
 
+interface Catalogo{
+  codigo : string;
+  descripcion : string;
+}
+
 @Component({
   selector: 'app-tarea-create',
-  /*standalone: true,
-  imports: [
-    CommonModule,
-    ButtonModule,
-    FormsModule,
-    SharedModule,
-    FloatLabelModule, CalendarModule,
-    CardModule, DividerModule, ReactiveFormsModule, InputGroupModule, InputGroupAddonModule,
-    InputTextareaModule, AutoCompleteModule],*/
   templateUrl: './tarea-create.component.html',
   styleUrl: './tarea-create.component.css'
 })
 export class TareaCreateComponent implements OnInit  {
   public title: String | undefined;
-  tareaForm: FormGroup;
+  tareaForm: FormGroup | any;
   errorMessage: string | null = null;
-  lstPrioridad: any[] | undefined;
-  lstEstado : any[] | undefined;
-  lstResponsables : any[] | undefined;
+  
+  lstPrioridad: Catalogo[] | undefined;
+  lstEstado : Catalogo[] | undefined;
+  lstResponsables : Catalogo[] | undefined;
   date: Date | undefined;
 
   selectedCountry: any;
@@ -38,7 +35,16 @@ export class TareaCreateComponent implements OnInit  {
 
   ngOnInit(): void {
     this.inicio();
-  }
+    this.tareaForm = new FormGroup(
+      {
+      nombre : new FormControl ([Validators.required]),
+      descTarea : new FormControl ([Validators.required]),
+      responsable : new FormControl <Catalogo | null >(null),
+      prioridad : new FormControl <Catalogo | null >(null),
+      estado : new FormControl <Catalogo | null >(null),
+      }
+    );
+  } 
 
   constructor(private fb: FormBuilder,private tareaService: TareaService, private router: Router) {
     this.title = "Registrar Tarea";
@@ -57,53 +63,53 @@ export class TareaCreateComponent implements OnInit  {
   async inicio(){
    console.log("inicio");
 
-    this.lstPrioridad =[
-      {
-        codPrioridad : "01",
-        desPrioridad : "Alta"
-      },
-      {
-        codPrioridad : "02",
-        desPrioridad : "Media"
-      },
-      {
-        codPrioridad : "03",
-        desPrioridad : "Baja"
-      },
-    ]
+   this.lstPrioridad =[
+    {
+      codigo : "01",
+      descripcion : "Alta"
+    },
+    {
+      codigo : "02",
+      descripcion : "Media"
+    },
+    {
+      codigo : "03",
+      descripcion : "Baja"
+    },
+  ]
 
-    this.lstEstado =[
-      {
-        codEstado : "01",
-        desEstado : "Registrada"
-      },
-      {
-        codEstado : "02",
-        desEstado : "Asignada"
-      },
-      {
-        codEstado : "03",
-        desEstado : "Terminada"
-      },
-    ]
+  this.lstEstado =[
+    {
+      codigo : "01",
+      descripcion : "Registrada"
+    },
+    {
+      codigo : "02",
+      descripcion : "Asignada"
+    },
+    {
+      codigo : "03",
+      descripcion : "Terminada"
+    },
+  ]
 
-    this.lstResponsables =[
-      {
-        codResponsable : "AXXX",
-        desResponsable : "Francy"
-      },
-      {
-        codResponsable : "BXXX",
-        desResponsable : "Howard"
-      },
-      {
-        codResponsable : "CXXX",
-        desResponsable : "Rocio"
-      },
-      {
-        codResponsable : "DXXX",
-        desResponsable : "Lisney"
-      },
+  this.lstResponsables =[
+    {
+      codigo : "AXXX",
+      descripcion : "Francy"
+    },
+    {
+      codigo : "BXXX",
+      descripcion : "Howard"
+    },
+    {
+      codigo : "CXXX",
+      descripcion : "Rocio"
+    },
+    {
+      codigo : "DXXX",
+      descripcion : "Lisney"
+    },
     ]
   }
 

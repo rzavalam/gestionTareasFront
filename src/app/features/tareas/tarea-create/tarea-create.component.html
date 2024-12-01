@@ -8,38 +8,39 @@
                 <div class ="grid">
                     <div class="col-12 md:col-6">
                         <label for="nombre">Nombre de Tarea</label>
-                        <input id="nombre" formControlName="nombre" />
+                        <input type="text" pInputText formControlName="nombre" />
                     </div>
                     <div class="col-12 md:col-6">
                         <label>Responsable</label>
-                        <p-inputGroup>
-                            <p-inputGroupAddon>
-                                <i class="pi pi-user"></i>
-                            </p-inputGroupAddon>
-                            <p-dropdown optionLabel="responsable"  [options]="lstResponsables"
+                        <p-dropdown 
+                            optionLabel="descripcion"  
+                            [options]="lstResponsables" 
+                            formControlName = "responsable"
                             placeholder="Seleccione" />
-                        </p-inputGroup>
                     </div>
                     <div class="col-12 md:col-6">
                         <label for="descTarea">Descripción</label>
-                        <textarea  id="descTarea" formControlName="descTarea" rows="5"
-                        cols="30" ></textarea>
+                        <textarea  
+                            pInputTextarea  
+                            formControlName="descTarea" 
+                            rows="5"
+                            cols="30" ></textarea>
                     </div>
                     <div class="col-12 md:col-6">
                         <label for="prioridad" class="fw-bold">Prioridad</label>
-                        <select class="form-select" formControlName="prioridad" id="prioridad" name="prioridad">
-                            <option *ngFor="let item of lstPrioridad" [value]="item.codPrioridad">
-                                {{item.codPrioridad + '-' + item.desPrioridad}}
-                            </option>
-                        </select>
+                        <p-dropdown 
+                            optionLabel="descripcion"  
+                            [options]="lstPrioridad" 
+                            formControlName = "prioridad"
+                            placeholder="Seleccione" />
                     </div>
                     <div class="col-12 md:col-6">
                         <label for="estado" class="fw-bold">Estado</label>
-                        <select class="form-select" formControlName="estado" id="estado" name="estado">
-                            <option *ngFor="let item of lstEstado" [value]="item.codEstado">
-                                {{item.codEstado + '-' + item.desEstado}}
-                            </option>
-                        </select>
+                        <p-dropdown 
+                            optionLabel="descripcion"  
+                            [options]="lstEstado" 
+                            formControlName = "estado"
+                            placeholder="Seleccione" />
                     </div>
                     <div class="col-12 md:col-6">
                         <label for="fechaInicio">Fecha Inicio</label>
