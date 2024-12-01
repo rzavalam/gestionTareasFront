@@ -23,7 +23,7 @@ export class TareaCreateComponent implements OnInit  {
   public title: String | undefined;
   tareaForm: FormGroup | any;
   errorMessage: string | null = null;
-  
+
   lstPrioridad: Catalogo[] | undefined;
   lstEstado : Catalogo[] | undefined;
   lstResponsables : Catalogo[] | undefined;
@@ -44,7 +44,7 @@ export class TareaCreateComponent implements OnInit  {
       estado : new FormControl <Catalogo | null >(null),
       }
     );
-  } 
+  }
 
   constructor(private fb: FormBuilder,private tareaService: TareaService, private router: Router) {
     this.title = "Registrar Tarea";
