@@ -14,14 +14,19 @@ interface Catalogo{
   descripcion : string;
 }
 
+const tareaIncio = {
+  fechaInicio: new Date('01/10/2024'),
+  fechaFinal : new Date('01/10/2024')
+}
+
 @Component({
   selector: 'app-tarea-create',
   templateUrl: './tarea-create.component.html',
   styleUrl: './tarea-create.component.css'
 })
-export class TareaCreateComponent implements OnInit  {
+export class TareaCreateComponent /*implements OnInit */ {
   public title: String | undefined;
-  tareaForm: FormGroup | any;
+  tareaForm: FormGroup;
   errorMessage: string | null = null;
 
   lstPrioridad: Catalogo[] | undefined;
@@ -33,22 +38,12 @@ export class TareaCreateComponent implements OnInit  {
 
   filteredCountries: any[] | undefined;
 
-  ngOnInit(): void {
-    this.inicio();
-    this.tareaForm = new FormGroup(
-      {
-      responsable : new FormControl <Catalogo | null >(null),
-      prioridad : new FormControl <Catalogo | null >(null),
-      estado : new FormControl <Catalogo | null >(null),
-      }
-    );
-  }
 
   constructor(private fb: FormBuilder,private tareaService: TareaService, private router: Router) {
     this.title = "Registrar Tarea";
-    this.tareaForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(50)]],
-      responsable: ['', [Validators.required, Validators.email]],
+    this.tareaForm  = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(5)]],
+      responsable: ['', [Validators.required]],
       descTarea: ['', [Validators.required, Validators.minLength(8)]],
       prioridad : ['', [Validators.required]],
       fechaInicio : ['', [Validators.required]],
@@ -57,6 +52,40 @@ export class TareaCreateComponent implements OnInit  {
     });
 
   }
+
+  ngOnInit(): void {
+    this.tareaForm.reset(tareaIncio);
+    this.inicio();
+    /*this.tareaForm = new FormGroup(
+      {
+      responsable : new FormControl <Catalogo | null >(null),
+      prioridad : new FormControl <Catalogo | null >(null),
+      estado : new FormControl <Catalogo | null >(null),
+      }
+    );*/
+  }
+
+  isValidoCampo (field : string): boolean | null{
+    return this.tareaForm.controls[field].errors 
+    && this.tareaForm.controls[field].touched;
+  }
+
+  getFieldError(field: string): string | null {
+    if(!this.tareaForm.controls[field]) return null;
+    const errors = this.tareaForm.controls[field].errors || {};
+
+    for (const key of Object.keys(errors)) {
+      switch (key){
+        case 'required' :
+          return 'Este campo es requerido';
+        case 'minLength' :
+            return 'Mínimo 5 caracteres'; 
+      }
+    }
+    return null;
+  }
+
+  
 
   async inicio(){
    console.log("inicio");
@@ -138,12 +167,33 @@ export class TareaCreateComponent implements OnInit  {
     this.filteredCountries = filtered;
 }
 
+get nombreTarea(){ return this.tareaForm.get('nombre') as FormControl;}
+get descripcionTarea(){ return this.tareaForm.get('descTarea') as FormControl;}
+get estadoTarea(){ return this.tareaForm.get('estado') as FormControl;} 
+get prioridadTarea(){ return this.tareaForm.get('prioridad') as FormControl;} 
+get responsableTarea(){ return this.tareaForm.get('responsable') as FormControl;} 
+
 registrarTarea(){
-  console.log("Tarea Registrada");
+  if(this.tareaForm.invalid){
+    this.tareaForm.markAllAsTouched();
+    return;
+  }
+ 
 
-  console.log(this.tareaForm.value as Tarea)
+  if(this.tareaForm.valid){
+    console.log("Tarea Registrada");
 
-  /*
+    console.log(this.tareaForm.value as Tarea)
+    
+    console.log ("Formulario Válido");
+     /*
+
+     let tarea : Tarea = new Tarea ;
+  tarea.nombre = this.nombreTarea.value;
+  console.log(tarea.nombre);
+  tarea.descTarea = this.descripcionTarea.value;
+  console.log(tarea.descTarea);
+
   this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
     next: (data) => {
       alert("Tarea Registrada");
@@ -154,5 +204,11 @@ registrarTarea(){
     }
   });
   */
+  }
+ 
+}
+
+cancelar(){
+  this.tareaForm.reset();
 }
 }
