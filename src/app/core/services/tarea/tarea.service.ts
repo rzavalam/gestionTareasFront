@@ -13,6 +13,7 @@ export class TareaService {
 
   private apiUrl =  environment.urlBase + "/angular/tareas/";
   private apiUrlConsultarAll = environment.urlBase + "/angular/tareas/listarTarea";
+  private apiUrlInsertar = environment.urlBase + "/angular/tareas/registrarTarea";
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +32,7 @@ export class TareaService {
   }
 
   createTarea(tarea: Tarea): Observable<Tarea> {
-    return this.http.post<Tarea>(this.apiUrl, tarea).pipe(
+    return this.http.post<Tarea>(this.apiUrlInsertar, tarea).pipe(
       catchError(this.handleError)
     );
   }

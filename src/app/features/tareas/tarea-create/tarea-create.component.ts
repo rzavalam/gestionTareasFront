@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { TareaService } from '../../../core/services/tarea/tarea.service';
+import { Tarea } from '../../../core/models/product/tarea';
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -12,9 +14,9 @@ interface AutoCompleteCompleteEvent {
   /*standalone: true,
   imports: [
     CommonModule,
-    ButtonModule, 
-    FormsModule, 
-    SharedModule, 
+    ButtonModule,
+    FormsModule,
+    SharedModule,
     FloatLabelModule, CalendarModule,
     CardModule, DividerModule, ReactiveFormsModule, InputGroupModule, InputGroupAddonModule,
     InputTextareaModule, AutoCompleteModule],*/
@@ -29,7 +31,7 @@ export class TareaCreateComponent implements OnInit  {
   lstEstado : any[] | undefined;
   lstResponsables : any[] | undefined;
   date: Date | undefined;
-  
+
   selectedCountry: any;
 
   filteredCountries: any[] | undefined;
@@ -37,19 +39,19 @@ export class TareaCreateComponent implements OnInit  {
   ngOnInit(): void {
     this.inicio();
   }
-  
-  constructor(private fb: FormBuilder) {
+
+  constructor(private fb: FormBuilder,private tareaService: TareaService, private router: Router) {
     this.title = "Registrar Tarea";
     this.tareaForm = this.fb.group({
-      txtNombre: ['', [Validators.required, Validators.email]],
-      selResponsable: ['', [Validators.required, Validators.email]],
-      txtDescripcion: ['', [Validators.required, Validators.minLength(8)]],
-      cboPrioridad : ['', [Validators.required]],
-      fecInicio : ['', [Validators.required]],
-      fecFin : ['', [Validators.required]],
-      cboEstado : ['', [Validators.required]]
+      nombre: ['', [Validators.required, Validators.email]],
+      responsable: ['', [Validators.required, Validators.email]],
+      descTarea: ['', [Validators.required, Validators.minLength(8)]],
+      prioridad : ['', [Validators.required]],
+      fechaInicio : ['', [Validators.required]],
+      fechaFinal : ['', [Validators.required]],
+      estado : ['', [Validators.required]]
     });
-    
+
   }
 
   async inicio(){
@@ -109,8 +111,8 @@ export class TareaCreateComponent implements OnInit  {
     this.title = 'REGISTRO DE TAREA';
   }
 
-  /*id 
-      name 
+  /*id
+      name
       responsable
       descripcion de tarea
       fechaInicio
@@ -134,5 +136,14 @@ export class TareaCreateComponent implements OnInit  {
 
 registrarTarea(){
   console.log("Tarea Registrada");
+  this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
+    next: (data) => {
+      alert("Tarea Registrada");
+    },
+    error: (err) => {
+      this.errorMessage = 'No se pudieron cargar los productos.';
+      console.error('Error al obtener productos:', err);
+    }
+  });
 }
 }
