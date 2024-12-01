@@ -1,13 +1,13 @@
 export const environment = {
     production: true,
     firebasase: {
-        apiKey: "AIzaSyCz-RhjsqbR8IBUVqaGAW6fBu9b2oYlHFI",
-        authDomain: "tareaapp-cfec3.firebaseapp.com",
-        projectId: "tareaapp-cfec3",
-        storageBucket: "tareaapp-cfec3.firebasestorage.app",
-        messagingSenderId: "48655195132",
-        appId: "1:48655195132:web:9e418bb6dff64f593f7079",
-        measurementId: "G-8VMD1FBKRP"
+        apiKey: "AIzaSyCU7e7COu2IIeXE31dlp8Enm53AjVzPq58",
+        authDomain: "proyectogestiontarea.firebaseapp.com",
+        projectId: "proyectogestiontarea",
+        storageBucket: "proyectogestiontarea.firebasestorage.app",
+        messagingSenderId: "632532434066",
+        appId: "1:632532434066:web:ab39b6eebf387e25e33a4b",
+        measurementId: "G-NRV9T82QMN"
     },
     urlBase: 'http://localhost:8080'
 }

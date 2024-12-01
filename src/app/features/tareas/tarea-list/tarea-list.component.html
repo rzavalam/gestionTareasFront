@@ -51,36 +51,33 @@
 
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width:3%">&Iacute;tem</th>
-                    <th pSortableColumn="numPci">N° Tarea
-                        <!--<p-sortIcon field=""> </p-sortIcon>-->
+                    <th pSortableColumn="idTarea">N° Tarea
+                        <p-sortIcon field="idTarea"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="desMotivoViaje">Nombre de la Tarea
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="nombre">Nombre de la Tarea
+                        <p-sortIcon field="nombre"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="nroDocAsociado">Responsable
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="responsable">Responsable
+                        <p-sortIcon field="responsable"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="desPaisPlaca">Descripcion de la Tarea
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="descTarea">Descripcion de la Tarea
+                        <p-sortIcon field="descTarea"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="nomPlaca">Fecha de Inicio
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="fechaInicio">Fecha de Inicio
+                        <p-sortIcon field="fechaInicio"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="nomPlacaCarreta">Fecha de Fin
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="fechaFinal">Fecha de Fin
+                        <p-sortIcon field="fechaFinal"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="desFlujoVehiculo">Prioridad
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="prioridad">Prioridad
+                        <p-sortIcon field="prioridad"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="tipoControl.desDataCat">Estado
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th pSortableColumn="estado">Estado
+                        <p-sortIcon field="estado"> </p-sortIcon>
                     </th>
-                    <th pSortableColumn="fecInicioControl">Semaforo
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th>Semaforo de acciones                     
                     </th>  
-                    <th pSortableColumn="fecInicioControl">Acciones
-                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    <th >Acciones                        
                     </th>                   
                 </tr>
             </ng-template>
@@ -88,13 +85,12 @@
             <ng-template pTemplate="body" let-tarea let-rowIndex="rowIndex">
 
                 <tr>
-                    <td>{{ rowIndex + 1}}</td>
                     <td>{{ tarea.idTarea}}</td>
                     <td>{{ tarea.nombre}}</td>
                     <td>{{ tarea.responsable}}</td>
                     <td>{{ tarea.descTarea}}</td>
-                    <td>{{ tarea.fechaInicio}}</td>
-                    <td>{{ tarea.fechaFinal}}</td>
+                    <td>{{ tarea.fechaInicio | date:"EEEE, d MMM y" }}</td>
+                    <td>{{ tarea.fechaFinal | date:"EEEE, d MMM y"}}</td>
                     <td>{{ tarea.prioridad}}</td>
                     <td>{{ tarea.estado}}</td>   
                     <td>
@@ -106,8 +102,8 @@
                         </svg>
                     </td>    
                     <td>
-                        <p-button label="Actualizar" icon="pi pi-check" />
-                        <p-button label="Eliminar" icon="pi pi-trash" />
+                        <p-button icon="pi pi-check" />&nbsp;
+                        <p-button icon="pi pi-trash" />
                     </td>                                    
                 </tr>
 

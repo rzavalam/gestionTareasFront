@@ -1,9 +1,7 @@
-import { Catalogo } from "./catalogo";
-
 export interface Tarea {
     idTarea: string;
     nombre: string;
-    responsable: Catalogo;
+    responsable: string;
     descTarea: string;
     prioridad: string;
     estado: string;
