@@ -50,7 +50,7 @@ export class TareaListComponent implements OnInit {
     if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
       this.tareaService.deleteTarea(id).subscribe({
         next: () => {
-          this.tareas = this.tareas.filter(product => product.id !== id);
+          this.tareas = this.tareas.filter(tarea => tarea.idTarea !== id);
           console.log('Producto eliminado:', id);
         },
         error: (err) => {

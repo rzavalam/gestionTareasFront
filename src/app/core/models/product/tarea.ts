@@ -1,10 +1,13 @@
 export interface Tarea {
-    id?: string;
-    name: string;
+    idTarea: string;
+    nombre: string;
     responsable: string;
-    descripcion: string;
-    fechaInicio : Date;
-    fechaFinal : Date;
+    descTarea: string;
     prioridad: string;
     estado: string;
+    fechaInicio : Date;
+    fechaFinal : Date;
+    fechaRegistro :  Date;
+    fechaModificacion: Date;  
+    
 }

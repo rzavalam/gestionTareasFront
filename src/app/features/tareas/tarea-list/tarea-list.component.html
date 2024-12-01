@@ -54,7 +54,10 @@
                     </th>
                     <th pSortableColumn="fecInicioControl">Semaforo
                         <!--<p-sortIcon field=""></p-sortIcon>-->
-                    </th>                    
+                    </th>  
+                    <th pSortableColumn="fecInicioControl">Acciones
+                        <!--<p-sortIcon field=""></p-sortIcon>-->
+                    </th>                   
                 </tr>
             </ng-template>
 
@@ -62,10 +65,10 @@
 
                 <tr>
                     <td>{{ rowIndex + 1}}</td>
-                    <td>{{ tarea.id}}</td>
-                    <td>{{ tarea.name}}</td>
+                    <td>{{ tarea.idTarea}}</td>
+                    <td>{{ tarea.nombre}}</td>
                     <td>{{ tarea.responsable}}</td>
-                    <td>{{ tarea.descripcion}}</td>
+                    <td>{{ tarea.descTarea}}</td>
                     <td>{{ tarea.fechaInicio}}</td>
                     <td>{{ tarea.fechaFinal}}</td>
                     <td>{{ tarea.prioridad}}</td>
@@ -78,7 +81,10 @@
                             <circle cx="8" cy="8" r="8" />
                         </svg>
                     </td>    
-                    <td></td>                                    
+                    <td>
+                        <p-button label="Actualizar" icon="pi pi-check" />
+                        <p-button label="Eliminar" icon="pi pi-trash" />
+                    </td>                                    
                 </tr>
 
 
