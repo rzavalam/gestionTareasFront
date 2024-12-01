@@ -136,6 +136,10 @@ export class TareaCreateComponent implements OnInit  {
 
 registrarTarea(){
   console.log("Tarea Registrada");
+
+  console.log(this.tareaForm.value as Tarea)
+
+  /*
   this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
     next: (data) => {
       alert("Tarea Registrada");
@@ -145,5 +149,6 @@ registrarTarea(){
       console.error('Error al obtener productos:', err);
     }
   });
+  */
 }
 }
