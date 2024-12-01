@@ -2,8 +2,33 @@
 <button (click)="redirect()">Create</button>
 
 <div class="card-body">
+
+    <div class="p-toolbar-group-end">
+
+        <p-button class="mr-2" size="small"
+        (onClick)="cambiarOrden('nombre')"
+        label = "Por nombre"
+        icon = "pi pi-sort"
+        styleClass="p-button-secondary"
+        >
+        </p-button>
+        <p-button class="mr-2" size="small"
+        (onClick)="cambiarOrden('prioridad')"
+        label = "Por prioridad"
+        icon = "pi pi-sort"
+        styleClass="p-button-secondary">
+        </p-button>
+        <p-button class="mr-2" size="small"
+        (onClick)="cambiarOrden('estado')"
+        label = "Por estado"
+        icon = "pi pi-sort"
+        styleClass="p-button-secondary">
+        </p-button>
+        
+
+    </div>
     <div class="row p-2">
-        <p-table #dt [value]="tareas | ordenar:'prioridad'" responsiveLayout="scroll"
+        <p-table #dt [value]="tareas | ordenar:ordenarParam" responsiveLayout="scroll"
             dataKey="numCorrelativo" [rows]="10" [paginator]="true" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[5,10,15,20]"
             [paginator]="true" [lazy]="false"

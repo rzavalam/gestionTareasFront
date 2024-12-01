@@ -13,6 +13,7 @@ export class TareaListComponent implements OnInit {
  
   tareas: Tarea[] = [];
   errorMessage: string | null = null;
+  public ordenarParam ? : keyof Tarea ;
  
  
   constructor(private tareaService: TareaService, private router: Router) {
@@ -61,5 +62,8 @@ export class TareaListComponent implements OnInit {
     }
   }
  
+  cambiarOrden(value : keyof Tarea){
+    this.ordenarParam = value;
+  }
  
 }
