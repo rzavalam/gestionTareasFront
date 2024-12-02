@@ -146,11 +146,6 @@ export class TareaCreateComponent /*implements OnInit */ {
       estado*/
 
 
-get nombreTarea(){ return this.tareaForm.get('nombre') as FormControl;}
-get descripcionTarea(){ return this.tareaForm.get('descTarea') as FormControl;}
-get estadoTarea(){ return this.tareaForm.get('estado') as FormControl;} 
-get prioridadTarea(){ return this.tareaForm.get('prioridad') as FormControl;} 
-get responsableTarea(){ return this.tareaForm.get('responsable') as FormControl;} 
 
 registrarTarea(){
   if(this.tareaForm.invalid){
