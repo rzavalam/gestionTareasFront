@@ -14,12 +14,13 @@
                                 pInputText 
                                 formControlName="nombre" />
     
-                            <span *ngIf="isValidoCampo('nombre')" 
-                                class="form-text text-danger texto-carmesi">
-                                {{getFieldError('nombre')}}
-                            </span> 
+                            
 
                         </div>
+                        <span *ngIf="isValidoCampo('nombre')" 
+                                class="form-text text-danger texto-carmesi">
+                                {{getFieldError('nombre')}}
+                        </span> 
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-6">
@@ -43,12 +44,12 @@
                                 [options]="lstPrioridad" 
                                 formControlName = "prioridad"
                                 placeholder="Seleccione" />
-                            <span *ngIf="isValidoCampo('prioridad')" 
-                                class="form-text text-danger">
-                                {{getFieldError('prioridad')}}
-                        </span>
+                            
                         </div>
-                         
+                        <span *ngIf="isValidoCampo('prioridad')" 
+                            class="form-text text-danger">
+                            {{getFieldError('prioridad')}}
+                        </span>
                         <div class="col-sm-4">
                             <label for="estado">Estado</label>
                             <p-dropdown 
@@ -56,34 +57,37 @@
                                 [options]="lstEstado" 
                                 formControlName = "estado"
                                 placeholder="Seleccione" />
-                                <span *ngIf="isValidoCampo('estado')" 
+                                 
+                        </div>
+                        <span *ngIf="isValidoCampo('estado')" 
                                 class="form-text text-danger">
                                 {{getFieldError('estado')}}
-                        </span> 
-                        </div>
+                        </span>
                         
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-4">
                             <label for="fechaInicio">Fecha Inicio</label>
-                            <p-calendar inputId="fechaInicio"  formControlName="fechaInicio" [(ngModel)]="date" [showIcon]="true"
+                            <p-calendar inputId="fechaInicio"  formControlName="fechaInicio"  [showIcon]="true"
                             class="p-element p-inputwrapper ng-tns-c44-5 ng-pristine ng-valid ng-star-inserted ng-touched">
                             </p-calendar>
-                            <span *ngIf="isValidoCampo('fechaInicio')" 
+                            
+                        </div>
+                        <span *ngIf="isValidoCampo('fechaInicio')" 
                                 class="form-text text-danger">
                                 {{getFieldError('fechaInicio')}}
                         </span> 
-                        </div>
                         <div class="col-sm-4">
                             <label for="fechaFinal">Fecha Fin</label>
-                            <p-calendar inputId="fechaFinal" formControlName="fechaFinal" [(ngModel)]="date" [showIcon]="true"
+                            <p-calendar inputId="fechaFinal" formControlName="fechaFinal"  [showIcon]="true"
                             class="p-element">
                             </p-calendar>
-                            <span *ngIf="isValidoCampo('fechaFinal')" 
+                            
+                        </div>
+                        <span *ngIf="isValidoCampo('fechaFinal')" 
                                 class="form-text text-danger">
                                 {{getFieldError('fechaFinal')}}
                         </span> 
-                        </div>
                     </div>
                     
                     <div class="mb-3 row">

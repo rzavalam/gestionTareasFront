@@ -46,7 +46,7 @@ export class TareaCreateComponent /*implements OnInit */ {
   }
 
   ngOnInit(): void {
-    this.tareaForm.reset(tareaIncio);
+    this.tareaForm.reset();//tareaIncio
     this.inicio();
     /*this.tareaForm = new FormGroup(
       {
