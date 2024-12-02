@@ -22,15 +22,29 @@ export class TareaListComponent implements OnInit {
   }
  
   ngOnInit() {
+
+
     this.tareaService.getTareas().subscribe({
       next: (data) => {
         this.tareas = data;
+        this.tareas.forEach(tarea => {
+          if (tarea.fechaFinal> new Date() && tarea.estado=='PENDIENTE' )
+          {
+             tarea.colorEstado='red';
+          }else {
+            tarea.colorEstado='green';
+          }
+
+        })
+        
       },
       error: (err) => {
         this.errorMessage = 'No se pudieron cargar los productos.';
         console.error('Error al obtener productos:', err);
       }
     });
+    
+
   }
  
   viewDetails(id : string) {
@@ -47,8 +61,8 @@ export class TareaListComponent implements OnInit {
   }
  
  
-  deleteProduct(id: string) {
-    if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+  deleteTarea(id: string) {
+    if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
       this.tareaService.deleteTarea(id).subscribe({
         next: () => {
           this.tareas = this.tareas.filter(tarea => tarea.idTarea !== id);

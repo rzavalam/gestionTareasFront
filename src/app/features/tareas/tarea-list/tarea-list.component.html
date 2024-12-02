@@ -31,20 +31,20 @@
     </div>
     <div class="row p-2">
         <p-table #dt [value]="tareas | ordenar:ordenarParam" responsiveLayout="scroll"
-            dataKey="numCorrelativo" [rows]="10" [paginator]="true" [showCurrentPageReport]="true"
+            dataKey="idTarea " [rows]="10" [paginator]="true" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[5,10,15,20]"
             [paginator]="true" [lazy]="false"
             currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-           >
+            [globalFilterFields]="['idTarea', 'nombre',  'responsable']"  >
 
             <ng-template pTemplate="caption">
-                <div class="p-d-flex">
+                <div class="p-d-flex" class="col-sm-4">
                     <span class="p-input-icon-left p-ml-auto">
                         <i class="pi pi-search"></i>
                         <input pInputText type="text" maxlength="21"
-                            
+                            (input)="dt.filterGlobal($any($event.target ).value, 'contains')" 
                             style="width:auto" placeholder="Filtro por Tarea" />
-                        <!--(input)="dt.filterGlobal($any($event.target ).value, 'contains')"-->                            
+                                                  
                     </span>
                 </div>
             </ng-template>
@@ -75,7 +75,7 @@
                     <th pSortableColumn="estado">Estado
                         <p-sortIcon field="estado"> </p-sortIcon>
                     </th>
-                    <th>Semaforo de acciones                     
+                    <th>Semaforo de avance                     
                     </th>  
                     <th >Acciones                        
                     </th>                   
@@ -93,17 +93,17 @@
                     <td>{{ tarea.fechaFinal | date:"EEEE, d MMM y"}}</td>
                     <td>{{ tarea.prioridad}}</td>
                     <td>{{ tarea.estado}}</td>   
-                    <td>
+                    <td class="text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             width="32" height="32" 
-                            fill="red"  
+                            [attr.fill]="tarea.colorEstado"  
                             class="bi bi-circle-fill" viewBox="0 0 16 16">
                             <circle cx="8" cy="8" r="8" />
                         </svg>
                     </td>    
                     <td>
                         <p-button icon="pi pi-check" />&nbsp;
-                        <p-button icon="pi pi-trash" />
+                        <p-button icon="pi pi-trash" severity="danger" (onClick)="deleteTarea(tarea.idTarea)"/>
                     </td>                                    
                 </tr>
 

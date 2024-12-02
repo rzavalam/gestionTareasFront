@@ -9,5 +9,5 @@ export interface Tarea {
     fechaFinal : Date;
     fechaRegistro :  Date;
     fechaModificacion: Date;
-
+    colorEstado : string
 }

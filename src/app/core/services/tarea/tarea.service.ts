@@ -14,6 +14,7 @@ export class TareaService {
   private apiUrl =  environment.urlBase + "/angular/tareas/";
   private apiUrlConsultarAll = environment.urlBase + "/angular/tareas/listarTarea";
   private apiUrlInsertar = environment.urlBase + "/angular/tareas/registrarTarea";
+  private apiUrlEliminar = environment.urlBase + "/angular/tareas/eliminarTarea";
 
   constructor(private http: HttpClient) {}
 
@@ -44,7 +45,7 @@ export class TareaService {
   }
 
   deleteTarea(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}/`).pipe(
+    return this.http.delete<void>(`${this.apiUrlEliminar}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
