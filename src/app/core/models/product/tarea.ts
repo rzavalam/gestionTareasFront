@@ -7,7 +7,5 @@ export interface Tarea {
     estado: string;
     fechaInicio : Date;
     fechaFinal : Date;
-    fechaRegistro :  Date;
-    fechaModificacion: Date;
     colorEstado : string
 }
