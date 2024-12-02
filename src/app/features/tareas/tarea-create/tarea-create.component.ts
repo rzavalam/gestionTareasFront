@@ -1,3 +1,4 @@
+import { fromJSON } from './../../../../../node_modules/vite/node_modules/postcss/lib/postcss.d';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -148,6 +149,9 @@ export class TareaCreateComponent /*implements OnInit */ {
 
 
 registrarTarea(){
+
+console.log( JSON.parse(JSON.stringify(this.tareaForm?.get('responsable')?.value )).descripcion);
+
   if(this.tareaForm.invalid){
     this.tareaForm.markAllAsTouched();
     return;
