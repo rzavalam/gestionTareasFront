@@ -34,7 +34,7 @@ body {
   }
  
   input {
-    width: 15%;
+    width: 55%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -67,3 +67,6 @@ body {
   .p_class {
     display: inline-block;
   }
+  .texto-carmesi {
+    color: crimson;
+}

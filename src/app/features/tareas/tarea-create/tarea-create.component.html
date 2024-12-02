@@ -10,11 +10,12 @@
                         <div class="col-sm-6">
                             <label for="nombre">Nombre de Tarea</label>
                             <input type="text" 
+                                class="p-inputtext-lg"
                                 pInputText 
                                 formControlName="nombre" />
     
                             <span *ngIf="isValidoCampo('nombre')" 
-                                class="form-text text-danger">
+                                class="form-text text-danger texto-carmesi">
                                 {{getFieldError('nombre')}}
                             </span> 
 
@@ -31,7 +32,7 @@
                         </div>
                         <span *ngIf="isValidoCampo('responsable')" 
                                 class="form-text text-danger">
-                                {{getFieldError('nombre')}}
+                                {{getFieldError('responsable')}}
                         </span> 
                     </div>
                     <div class="mb-3 row">
@@ -44,7 +45,7 @@
                                 placeholder="Seleccione" />
                             <span *ngIf="isValidoCampo('prioridad')" 
                                 class="form-text text-danger">
-                                {{getFieldError('nombre')}}
+                                {{getFieldError('prioridad')}}
                         </span>
                         </div>
                          
@@ -57,7 +58,7 @@
                                 placeholder="Seleccione" />
                                 <span *ngIf="isValidoCampo('estado')" 
                                 class="form-text text-danger">
-                                {{getFieldError('nombre')}}
+                                {{getFieldError('estado')}}
                         </span> 
                         </div>
                         
@@ -68,7 +69,7 @@
                             <p-calendar inputId="fechaInicio"  formControlName="fechaInicio" [(ngModel)]="date" [showIcon]="true"
                             class="p-element p-inputwrapper ng-tns-c44-5 ng-pristine ng-valid ng-star-inserted ng-touched">
                             </p-calendar>
-                            <span *ngIf="isValidoCampo('estado')" 
+                            <span *ngIf="isValidoCampo('fechaInicio')" 
                                 class="form-text text-danger">
                                 {{getFieldError('fechaInicio')}}
                         </span> 
@@ -78,7 +79,7 @@
                             <p-calendar inputId="fechaFinal" formControlName="fechaFinal" [(ngModel)]="date" [showIcon]="true"
                             class="p-element">
                             </p-calendar>
-                            <span *ngIf="isValidoCampo('estado')" 
+                            <span *ngIf="isValidoCampo('fechaFinal')" 
                                 class="form-text text-danger">
                                 {{getFieldError('fechaFinal')}}
                         </span> 

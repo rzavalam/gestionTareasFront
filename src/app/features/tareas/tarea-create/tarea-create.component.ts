@@ -3,16 +3,8 @@ import { FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { TareaService } from '../../../core/services/tarea/tarea.service';
 import { Tarea } from '../../../core/models/product/tarea';
+import { Catalogo } from '../../../core/models/product/catalogo'; 
 
-interface AutoCompleteCompleteEvent {
-  originalEvent: Event;
-  query: string;
-}
-
-interface Catalogo{
-  codigo : string;
-  descripcion : string;
-}
 
 const tareaIncio = {
   fechaInicio: new Date('01/10/2024'),
@@ -153,19 +145,6 @@ export class TareaCreateComponent /*implements OnInit */ {
       prioridad
       estado*/
 
-  filterCountry(event: AutoCompleteCompleteEvent) {
-    let filtered: any[] = [];
-    let query = event.query;
-
-    for (let i = 0; i < (this.lstPrioridad as any[]).length; i++) {
-        let prioridad = (this.lstPrioridad as any[])[i];
-        /*if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-            filtered.push(country);
-        }*/
-    }
-
-    this.filteredCountries = filtered;
-}
 
 get nombreTarea(){ return this.tareaForm.get('nombre') as FormControl;}
 get descripcionTarea(){ return this.tareaForm.get('descTarea') as FormControl;}
@@ -186,24 +165,25 @@ registrarTarea(){
     console.log(this.tareaForm.value as Tarea)
     
     console.log ("Formulario Válido");
-     /*
+     
 
-     let tarea : Tarea = new Tarea ;
-  tarea.nombre = this.nombreTarea.value;
-  console.log(tarea.nombre);
-  tarea.descTarea = this.descripcionTarea.value;
-  console.log(tarea.descTarea);
+   /*  let tarea : Tarea = new Tarea () ;
+    tarea.nombre = this.nombreTarea.value;
+    console.log(tarea.nombre);
+    tarea.descTarea = this.descripcionTarea.value;
+    console.log(tarea.descTarea);
 
-  this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
-    next: (data) => {
-      alert("Tarea Registrada");
-    },
+    this.tareaService.createTarea(tarea).subscribe({
+    //this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
+      next: (data) => {
+        alert("Tarea Registrada");
+      },
     error: (err) => {
       this.errorMessage = 'No se pudieron cargar los productos.';
       console.error('Error al obtener productos:', err);
     }
-  });
-  */
+  });*/
+  
   }
  
 }
