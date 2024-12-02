@@ -28,7 +28,7 @@ export class TareaListComponent implements OnInit {
       next: (data) => {
         this.tareas = data;
         this.tareas.forEach(tarea => {
-          if (tarea.fechaFinal> new Date() && tarea.estado=='PENDIENTE' )
+          if (tarea.fechaFinal> new Date() && tarea.estado=='Asignada' )
           {
              tarea.colorEstado='red';
           }else {
