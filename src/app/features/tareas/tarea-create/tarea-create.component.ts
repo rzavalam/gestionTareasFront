@@ -150,7 +150,7 @@ export class TareaCreateComponent /*implements OnInit */ {
 
 registrarTarea(){
 
-console.log( JSON.parse(JSON.stringify(this.tareaForm?.get('responsable')?.value )).descripcion);
+//console.log( JSON.parse(JSON.stringify(this.tareaForm?.get('responsable')?.value )).descripcion);
 
   if(this.tareaForm.invalid){
     this.tareaForm.markAllAsTouched();
@@ -185,6 +185,7 @@ console.log( JSON.parse(JSON.stringify(this.tareaForm?.get('responsable')?.value
     //this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
       next: (data) => {
         alert("Tarea Registrada");
+        this.tareaForm.reset();
       },
     error: (err) => {
       this.errorMessage = 'No se pudieron cargar los productos.';

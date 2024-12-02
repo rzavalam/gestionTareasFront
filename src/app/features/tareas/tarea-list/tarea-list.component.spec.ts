@@ -14,7 +14,7 @@ import { OrdenarPipe } from '../pipes/ordenar.pipe';
 describe('TareaListComponent', () => {
   let component: TareaListComponent;
   let fixture: ComponentFixture<TareaListComponent>;
-  let tareas : Tarea[] = [{idTarea:'1', nombre:'SunatTest', responsable:'01', descTarea:'descripcion', prioridad:'01', estado:'01', fechaInicio:new Date('10/10/2024'), fechaFinal:new Date('10/10/2024'), fechaRegistro:new Date('10/10/2024'), fechaModificacion:new Date('10/10/2024'), colorEstado:'rojo'}]
+  let tareas : Tarea[] = [{idTarea:'1', nombre:'SunatTest', responsable:'01', descTarea:'descripcion', prioridad:'01', estado:'01', fechaInicio:new Date('10/10/2024'), fechaFinal:new Date('10/10/2024'), colorEstado:'rojo'}]
   const myServiceSubject = new Subject<Tarea[]>();
   const myServiceMock = jasmine.createSpyObj('TareaService', tareas, {getTareas:()=>myServiceSubject.asObservable()});
   let service: TareaService;
