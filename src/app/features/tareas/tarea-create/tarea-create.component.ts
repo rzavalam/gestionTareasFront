@@ -1,9 +1,10 @@
+import { fromJSON } from './../../../../../node_modules/vite/node_modules/postcss/lib/postcss.d';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { TareaService } from '../../../core/services/tarea/tarea.service';
 import { Tarea } from '../../../core/models/product/tarea';
-import { Catalogo } from '../../../core/models/product/catalogo'; 
+import { Catalogo } from '../../../core/models/product/catalogo';
 
 
 const tareaIncio = {
@@ -58,7 +59,7 @@ export class TareaCreateComponent /*implements OnInit */ {
   }
 
   isValidoCampo (field : string): boolean | null{
-    return this.tareaForm.controls[field].errors 
+    return this.tareaForm.controls[field].errors
     && this.tareaForm.controls[field].touched;
   }
 
@@ -71,13 +72,13 @@ export class TareaCreateComponent /*implements OnInit */ {
         case 'required' :
           return 'Este campo es requerido';
         case 'minLength' :
-            return 'Mínimo 5 caracteres'; 
+            return 'Mínimo 5 caracteres';
       }
     }
     return null;
   }
 
-  
+
 
   async inicio(){
    console.log("inicio");
@@ -148,25 +149,37 @@ export class TareaCreateComponent /*implements OnInit */ {
 
 
 registrarTarea(){
+
+console.log( JSON.parse(JSON.stringify(this.tareaForm?.get('responsable')?.value )).descripcion);
+
   if(this.tareaForm.invalid){
     this.tareaForm.markAllAsTouched();
     return;
   }
- 
+
 
   if(this.tareaForm.valid){
     console.log("Tarea Registrada");
 
     console.log(this.tareaForm.value as Tarea)
-    
-    console.log ("Formulario Válido");
-     
 
-   /*  let tarea : Tarea = new Tarea () ;
-    tarea.nombre = this.nombreTarea.value;
-    console.log(tarea.nombre);
-    tarea.descTarea = this.descripcionTarea.value;
-    console.log(tarea.descTarea);
+    console.log ("Formulario Válido");
+
+
+    let  tarea ={} as Tarea;
+    tarea  = {
+    idTarea: this.tareaForm?.get('idTarea')?.value,
+    nombre: this.tareaForm?.get('nombre')?.value,
+    responsable: JSON.parse(JSON.stringify(this.tareaForm?.get('responsable')?.value )).descripcion,
+    descTarea: this.tareaForm?.get('descTarea')?.value,
+    prioridad: JSON.parse(JSON.stringify(this.tareaForm?.get('prioridad')?.value )).descripcion,
+    estado: JSON.parse(JSON.stringify(this.tareaForm?.get('estado')?.value )).descripcion,
+    fechaInicio : this.tareaForm?.get('fechaInicio')?.value,
+    fechaFinal : this.tareaForm?.get('fechaFinal')?.value,
+    colorEstado : this.tareaForm?.get('colorEstado')?.value
+    }
+    console.log(tarea)
+
 
     this.tareaService.createTarea(tarea).subscribe({
     //this.tareaService.createTarea(this.tareaForm.value as Tarea).subscribe({
@@ -177,10 +190,10 @@ registrarTarea(){
       this.errorMessage = 'No se pudieron cargar los productos.';
       console.error('Error al obtener productos:', err);
     }
-  });*/
-  
+  });
+
   }
- 
+
 }
 
 limpiar(){

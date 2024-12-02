@@ -1,116 +1,62 @@
 <p-card styleClass="user-form" class="flex justify-content-center">
-    <form [formGroup]="tareaForm" (ngSubmit)='registrarTarea()' autocomplete="off" onKeyPress="if(event.keyCode == 13) event.returnValue = false;">
+    <form [formGroup]="tareaForm" onKeyPress="if(event.keyCode == 13) event.returnValue = false;">
         <div class="card flex flex-column md:flex-row gap-3">
             <div class="card-header">
                 {{title}}
             </div>
             <div class="card-body">
                 <div class ="grid">
-                    <div class="mb-3 row">
-                        <div class="col-sm-6">
-                            <label for="nombre">Nombre de Tarea</label>
-                            <input type="text" 
-                                class="p-inputtext-lg"
-                                pInputText 
-                                formControlName="nombre" />
-    
-                            
-
-                        </div>
-                        <span *ngIf="isValidoCampo('nombre')" 
-                                class="form-text text-danger texto-carmesi">
-                                {{getFieldError('nombre')}}
-                        </span> 
+                    <div class="col-12 md:col-6">
+                        <label for="nombre">Nombre de Tarea</label>
+                        <input type="text" pInputText formControlName="nombre" />
                     </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-6">
-                            <label>Responsable</label>
-                            <p-dropdown 
-                                optionLabel="descripcion"  
-                                [options]="lstResponsables" 
-                                formControlName = "responsable"
-                                placeholder="Seleccione" />
-                        </div>
-                        <span *ngIf="isValidoCampo('responsable')" 
-                                class="form-text text-danger">
-                                {{getFieldError('responsable')}}
-                        </span> 
+                    <div class="col-12 md:col-6">
+                        <label>Responsable</label>
+                        <p-dropdown
+                            optionLabel="descripcion"
+                            [options]="lstResponsables"
+                            formControlName = "responsable"
+                            placeholder="Seleccione" />
                     </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-4">
-                            <label for="prioridad">Prioridad</label>
-                            <p-dropdown 
-                                optionLabel="descripcion"  
-                                [options]="lstPrioridad" 
-                                formControlName = "prioridad"
-                                placeholder="Seleccione" />
-                            
-                        </div>
-                        <span *ngIf="isValidoCampo('prioridad')" 
-                            class="form-text text-danger">
-                            {{getFieldError('prioridad')}}
-                        </span>
-                        <div class="col-sm-4">
-                            <label for="estado">Estado</label>
-                            <p-dropdown 
-                                optionLabel="descripcion"  
-                                [options]="lstEstado" 
-                                formControlName = "estado"
-                                placeholder="Seleccione" />
-                                 
-                        </div>
-                        <span *ngIf="isValidoCampo('estado')" 
-                                class="form-text text-danger">
-                                {{getFieldError('estado')}}
-                        </span>
-                        
+                    <div class="col-12 md:col-6">
+                        <label for="descTarea">Descripción</label>
+                        <textarea
+                            pInputTextarea
+                            formControlName="descTarea"
+                            rows="5"
+                            cols="30" ></textarea>
                     </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-4">
-                            <label for="fechaInicio">Fecha Inicio</label>
-                            <p-calendar inputId="fechaInicio"  formControlName="fechaInicio"  [showIcon]="true"
-                            class="p-element">
-                            </p-calendar>
-                            
-                        </div>
-                        <span *ngIf="isValidoCampo('fechaInicio')" 
-                                class="form-text text-danger">
-                                {{getFieldError('fechaInicio')}}
-                        </span> 
-                        <div class="col-sm-4">
-                            <label for="fechaFinal">Fecha Fin</label>
-                            <p-calendar inputId="fechaFinal" formControlName="fechaFinal"  [showIcon]="true"
-                            class="p-element">
-                            </p-calendar>
-                            
-                        </div>
-                        <span *ngIf="isValidoCampo('fechaFinal')" 
-                                class="form-text text-danger">
-                                {{getFieldError('fechaFinal')}}
-                        </span> 
+                    <div class="col-12 md:col-6">
+                        <label for="prioridad" class="fw-bold">Prioridad</label>
+                        <p-dropdown
+                            optionLabel="descripcion"
+                            [options]="lstPrioridad"
+                            formControlName = "prioridad"
+                            placeholder="Seleccione" />
                     </div>
-                    
-                    <div class="mb-3 row">
-                        <div class="col-sm-6">
-                            <label for="descTarea">Descripción</label>
-                            <textarea  
-                                pInputTextarea  
-                                formControlName="descTarea" 
-                                rows="5"
-                                cols="30" ></textarea>
-                        </div>
+                    <div class="col-12 md:col-6">
+                        <label for="estado" class="fw-bold">Estado</label>
+                        <p-dropdown
+                            optionLabel="descripcion"
+                            [options]="lstEstado"
+                            formControlName = "estado"
+                            placeholder="Seleccione" />
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <label for="fechaInicio">Fecha Inicio</label>
+                        <p-calendar inputId="fechaInicio"  formControlName="fechaInicio" [(ngModel)]="date" [showIcon]="true"
+                        class="p-element p-inputwrapper ng-tns-c44-5 ng-pristine ng-valid ng-star-inserted ng-touched">
+                        </p-calendar>
+                        <label for="fechaFinal">Fecha Fin</label>
+                        <p-calendar inputId="fechaFinal" formControlName="fechaFinal" [(ngModel)]="date" [showIcon]="true"
+                        class="p-element">
+                        </p-calendar>
                     </div>
                     <p-divider type="solid" />
-                    <div class="mb-3 row">
-                        <div class="col-sm-3">
-                            <p-button label="Registrar" type="submit"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <p-button styleClass="p-button-secondary" label="Limpiar" (onClick)="limpiar()" />
-                        </div>
-                        <div class="col-sm-3">
-                            <p-button styleClass="p-button-secondary" label="Cancelar" (onClick)="cancelar()" />
-                        </div>
+                    <div class="col-12 md:col-6">
+                        <p-button label="Registrar" (onClick)="registrarTarea()" />
+                        <p-button label="Cancelar" disabled="true" />
+
                     </div>
                  </div>
             </div>
