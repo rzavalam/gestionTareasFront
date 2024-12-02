@@ -183,7 +183,11 @@ registrarTarea(){
  
 }
 
-cancelar(){
+limpiar(){
   this.tareaForm.reset();
+}
+
+cancelar(){
+  this.router.navigate(['/listar']);
 }
 }

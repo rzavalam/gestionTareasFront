@@ -69,7 +69,7 @@
                         <div class="col-sm-4">
                             <label for="fechaInicio">Fecha Inicio</label>
                             <p-calendar inputId="fechaInicio"  formControlName="fechaInicio"  [showIcon]="true"
-                            class="p-element p-inputwrapper ng-tns-c44-5 ng-pristine ng-valid ng-star-inserted ng-touched">
+                            class="p-element">
                             </p-calendar>
                             
                         </div>
@@ -102,9 +102,11 @@
                     </div>
                     <p-divider type="solid" />
                     <div class="mb-3 row">
-                        <div class="col-sm-3"></div>
                         <div class="col-sm-3">
                             <p-button label="Registrar" type="submit"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <p-button styleClass="p-button-secondary" label="Limpiar" (onClick)="limpiar()" />
                         </div>
                         <div class="col-sm-3">
                             <p-button styleClass="p-button-secondary" label="Cancelar" (onClick)="cancelar()" />
