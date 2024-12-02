@@ -20,6 +20,8 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+
 registerLocaleData(localeEs, 'es')
 
 
@@ -46,7 +48,8 @@ registerLocaleData(localeEs, 'es')
   providers: [
     //provideClientHydration(),
     provideHttpClient(withFetch()),
-    {provide: LOCALE_ID, useValue: 'es'}
+    {provide: LOCALE_ID, useValue: 'es'},
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebasase }
   ],
   bootstrap: [AppComponent]
 })
